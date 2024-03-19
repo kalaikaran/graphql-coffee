@@ -2,14 +2,28 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""A Flavor entity/ model"""
+type Flavor {
+  """The id of the flavor."""
+  id: ID!
+  name: String!
+  coffees: [Coffee!]!
+}
+
 """A coffee entity/ model"""
 type Coffee {
   """Unique identifier for the coffee"""
   id: ID
   name: String!
   brand: String!
-  flavors: [String!]!
+  flavors: [Flavor!]!
+  createdAt: Timestamp
 }
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
 
 type Query {
   coffees: [Coffee!]!
@@ -18,8 +32,8 @@ type Query {
 
 type Mutation {
   createCoffee(createCoffeeInput: CreateCoffeeInput!): Coffee!
-  updateCoffee(id: Float!, updateCoffeeInput: UpdateCoffeeInput!): Coffee!
-  removeCoffee(id: Float!): Coffee!
+  updateCoffee(id: Int!, updateCoffeeInput: UpdateCoffeeInput!): Coffee!
+  removeCoffee(id: Int!): Coffee!
 }
 
 input CreateCoffeeInput {

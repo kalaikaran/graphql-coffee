@@ -22,10 +22,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      // buildSchemaOptions: {
-      //   numberScalarMode: 'integer',
-
-      // },
+      buildSchemaOptions: {
+        numberScalarMode: 'integer',
+        dateScalarMode: 'timestamp',
+      },
     }),
     CoffeesModule,
   ],
